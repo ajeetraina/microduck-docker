@@ -15,7 +15,7 @@ The boundary is preserved here rather than widened:
   * the browser origin stays http://localhost:PORT, leaving LOCAL_ORIGIN_RE
     and the /ws + POST /captures origin checks untouched.
 
-This edits the copy pip installed into the venv — the file Python actually
+This edits the copy pip installed into the venv - the file Python actually
 imports. Editing the source tree instead would patch a file nothing loads, and
 the server would quietly keep binding 127.0.0.1 and be unreachable.
 

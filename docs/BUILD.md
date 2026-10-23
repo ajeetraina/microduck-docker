@@ -38,7 +38,7 @@ resolve ──► test ──► publish
 
 | Trigger | When |
 |---|---|
-| `schedule` | Mondays 04:17 UTC — picks up upstream changes unattended |
+| `schedule` | Mondays 04:17 UTC - picks up upstream changes unattended |
 | `push` | changes to `Dockerfile`, `entrypoint.sh`, or the workflow |
 | `pull_request` | build + test only, never publishes |
 | `workflow_dispatch` | manual, with an "all architectures" checkbox |
@@ -77,7 +77,7 @@ Always built: `linux/amd64`, `linux/arm64`.
 On request (the `all_arches` checkbox): `linux/ppc64le`, `linux/s390x`.
 
 The exotic pair is opt-in because they build under QEMU emulation and there are
-no manylinux wheels for numba/onnxruntime there, so those compile from source —
+no manylinux wheels for numba/onnxruntime there, so those compile from source -
 expect a long run. `build-essential` and `cmake` are in the builder stage for
 exactly this reason.
 
@@ -111,7 +111,7 @@ Then run the checks in
 | `/app/microduck_rl` | MJCF robot model + meshes (`MICRODUCK_RL_DIR`) |
 | `/app/policies` | pretrained `.onnx` policies |
 | `/app/viewer` | prebuilt Next.js standalone server |
-| `/data` | **volume** — runs, captures, roster |
+| `/data` | **volume** - runs, captures, roster |
 
 Size notes: CPU-only torch is installed from the PyTorch CPU index, which
 avoids ~2.5 GB of CUDA wheels the image could never use. The viewer is built
@@ -121,7 +121,7 @@ with `output: "standalone"`, so no `node_modules` ships.
 
 `duck-lab` hardcodes `host="127.0.0.1"`, which inside a container means
 "unreachable from outside". The Dockerfile adds a `--host` flag by `sed`,
-and **fails the build** if the target line is not found — so an upstream
+and **fails the build** if the target line is not found - so an upstream
 refactor produces a loud error instead of a silently unbound server.
 
 Upstream's loopback restriction is a real security boundary (the API exposes

@@ -1,6 +1,6 @@
 # 🦆 microduck-docker
 
-**The [Microduck](https://pollen-robotics.com/microduck) robot simulator — in one command.**
+**The [Microduck](https://pollen-robotics.com/microduck) robot simulator - in one command.**
 
 <p align="center">
   <a href="https://hub.docker.com/r/ajeetraina777/microduck-docker"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/ajeetraina777/microduck-docker?logo=docker&logoColor=white&color=2496ED"></a>
@@ -11,7 +11,7 @@
 
 Microduck is a 25 cm robot that walks on two legs, made by [Pollen Robotics](https://pollen-robotics.com)
 and open-sourced with Hugging Face. This image lets you **watch it walk, teach it
-tricks, and train your own robot brain** — in your browser, on the computer you
+tricks, and train your own robot brain** - in your browser, on the computer you
 already have.
 
 You do **not** need the real robot, Python, a GPU, or any knowledge of neural
@@ -27,13 +27,13 @@ Then open **<http://localhost:63317>** 🎉
 
 ## What you get
 
-Everything is already inside the image — no downloads on first run, no setup.
+Everything is already inside the image - no downloads on first run, no setup.
 
 | Inside the box | What it means |
 |---|---|
 | 🧠 **9 pretrained robot brains** | walking, standing, kicking a ball, a forward roll… press play and watch |
 | 🦴 **The real robot model** | the actual 3D Microduck, with real joint limits and real physics (MuJoCo) |
-| 🎓 **Teach panel** | ask for a trick in plain English — "stand on one leg" — and watch it learn |
+| 🎓 **Teach panel** | ask for a trick in plain English - "stand on one leg" - and watch it learn |
 | 🏋️ **Full training toolkit** | train a brand-new walking brain on your own laptop's CPU in minutes |
 | 🎬 **Video capture** | film your robot and export mp4/GIF to share |
 | 🖥️ **Runs anywhere** | Intel, AMD, Apple Silicon, Raspberry Pi |
@@ -68,13 +68,13 @@ namespace, with the build wired to publish via GitHub Actions.
 The simulator itself is the work of three upstream projects, all credited in
 [`NOTICE`](NOTICE):
 
-- [`pollen-robotics/microduck_rl`](https://github.com/pollen-robotics/microduck_rl) — robot model + physics
-- [`jonathanhawkins/microduck-lab`](https://github.com/jonathanhawkins/microduck-lab) — the lab + viewer
-- [`IronSpiderMan/MicroDuckModels`](https://github.com/IronSpiderMan/MicroDuckModels) — the pretrained brains
+- [`pollen-robotics/microduck_rl`](https://github.com/pollen-robotics/microduck_rl) - robot model + physics
+- [`jonathanhawkins/microduck-lab`](https://github.com/jonathanhawkins/microduck-lab) - the lab + viewer
+- [`IronSpiderMan/MicroDuckModels`](https://github.com/IronSpiderMan/MicroDuckModels) - the pretrained brains
 
 ---
 
-## ⚠️ License — non-commercial
+## ⚠️ License - non-commercial
 
 Code here is **Apache-2.0** (see [LICENSE](LICENSE)). **But** the image bundles the
 Microduck 3D model and the pretrained policies, which carry a **Creative Commons

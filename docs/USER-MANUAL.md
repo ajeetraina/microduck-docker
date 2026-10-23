@@ -1,4 +1,4 @@
-# 🦆 Microduck Docker — User Manual
+# 🦆 Microduck Docker - User Manual
 
 Everything this image can do, from "I just want to see a robot" to "I want to
 train my own and put it on real hardware".
@@ -38,7 +38,7 @@ The container runs two programs:
 | **duck-viewer** | 63317 | the 3D web page you look at |
 
 Your browser talks to *both*, which is why you publish two ports. The page
-draws what the physics engine reports — it is not a video, it is a live
+draws what the physics engine reports - it is not a video, it is a live
 simulation responding to you.
 
 ---
@@ -87,27 +87,27 @@ Click to select, then **W/A/S/D**. You send a *velocity command*; the brain
 works out the leg motion. This is the same 61-number observation and 14-number
 action the real robot uses.
 
-### Policy panel — swapping brains
+### Policy panel - swapping brains
 Every duck runs one `.onnx` policy. Drag a policy chip onto a duck to swap it
 live. Good experiments:
 
-- `BEST_alpha_walking` vs `BEST_alpha_stand` — same body, different goal
+- `BEST_alpha_walking` vs `BEST_alpha_stand` - same body, different goal
 - drop `roulade` on a walking duck mid-stride
 - put the *same* brain on several ducks and push them differently
 
-### 🎓 Teach panel — the fun one
+### 🎓 Teach panel - the fun one
 Type a trick: `stand on one leg`, `wave`, `crouch`, `headstand`, `backflip`.
 
 What happens:
 1. keywords are matched to a **reward recipe** (no LLM involved)
-2. the recipe is shown in plain English — *this* is what the robot is paid to do
+2. the recipe is shown in plain English - *this* is what the robot is paid to do
 3. PPO training starts; roughly every 15 s a fresh snapshot hot-loads
 4. you watch it improve, and drag sliders to change the rewards
 
 **This is the single best thing in the image for learning RL.** Reward shaping
 stops being abstract when a bad reward makes your duck fall over immediately.
 
-Hard tricks (the backflip) are staged curricula — the viewer narrates the chain.
+Hard tricks (the backflip) are staged curricula - the viewer narrates the chain.
 
 ### 🎬 Animate panel
 Pose the robot by hand with a keyframe rig, then press **train this** and RL
@@ -119,7 +119,7 @@ are physically impossible: physics does not negotiate.
 (mount a volume to keep them).
 
 ### ⤓ ONNX download
-Any run can be downloaded as `.onnx` with the normalizer baked in — the same
+Any run can be downloaded as `.onnx` with the normalizer baked in - the same
 format the real robot's runtime loads.
 
 ---
@@ -212,7 +212,7 @@ Give Docker Desktop more CPUs (*Settings → Resources*) before a long run.
 ### How good is it?
 
 `eval` reports falls and how well it follows commands. Compare against
-`BEST_alpha_walking` — beating it is genuinely hard, and that's the lesson.
+`BEST_alpha_walking` - beating it is genuinely hard, and that's the lesson.
 
 ### Does this work on the real robot?
 
@@ -233,12 +233,12 @@ more compute than a CPU can provide. Invent the behaviour here; graduate it ther
 | `serve` *(default)* | run the simulator + viewer |
 | `policies` | list brains in the image and in `/data/runs` |
 | `version` | exact upstream commits this image was built from |
-| `train …` | `train-walk` — velocity-command walking |
-| `behavior …` | `train-behavior` — tricks |
-| `export …` | `export-walk` — ONNX with normalizer baked in |
-| `eval …` | `eval-walk` — headless scoring |
-| `render …` | `render-rollout` — mp4 + captioned contact sheet |
-| `bench …` | `bench-walk` — throughput tuning |
+| `train …` | `train-walk` - velocity-command walking |
+| `behavior …` | `train-behavior` - tricks |
+| `export …` | `export-walk` - ONNX with normalizer baked in |
+| `eval …` | `eval-walk` - headless scoring |
+| `render …` | `render-rollout` - mp4 + captioned contact sheet |
+| `bench …` | `bench-walk` - throughput tuning |
 | `shell` | bash inside the container |
 
 Anything else is executed literally, so `… ajeetraina777/microduck-docker python -V` works.
@@ -296,12 +296,12 @@ and the viewer returns `HTTP 200`.
 Open <http://localhost:63317> and confirm:
 
 - [ ] two ducks are visible and **standing, not sinking through the floor**
-- [ ] one is stepping in place (the walker) — motion means physics is stepping
+- [ ] one is stepping in place (the walker) - motion means physics is stepping
 - [ ] clicking a duck selects it; **W** makes it walk forward
 - [ ] the Teach panel lists tricks
 - [ ] dragging a policy chip onto a duck changes its behaviour
 
-If the ducks are frozen, the physics thread died — check `docker logs ducktest`.
+If the ducks are frozen, the physics thread died - check `docker logs ducktest`.
 
 <!-- CAPTURE:review -->
 
@@ -324,7 +324,7 @@ Remap the outside number: `-p 8080:63317` → browse `localhost:8080`.
 (If you remap 8788, tell the page with `http://localhost:8080/?lab=localhost:9999`.)
 
 **Very slow, fans loud**
-Normal — this is real physics. Fewer ducks (`-e DUCKS="BEST_alpha_walking"`),
+Normal - this is real physics. Fewer ducks (`-e DUCKS="BEST_alpha_walking"`),
 more CPUs in Docker Desktop, and close the Teach panel when not training.
 
 **Trained runs disappeared**
@@ -361,10 +361,10 @@ A 45-minute lesson that needs no robotics background.
 
 **Notes for the teacher**
 
-- Fully offline after the first `docker pull` — good for locked-down networks.
+- Fully offline after the first `docker pull` - good for locked-down networks.
 - One machine can drive a projector while pairs experiment on laptops.
 - The reward sliders are the lesson. Let a group deliberately design a *bad*
-  reward and watch it get exploited — that is AI safety, taught in 3 minutes.
+  reward and watch it get exploited - that is AI safety, taught in 3 minutes.
 
 ---
 

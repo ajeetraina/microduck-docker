@@ -1,11 +1,11 @@
 # syntax=docker/dockerfile:1.7
 #
-# microduck-docker — the Microduck simulator, batteries included.
+# microduck-docker - the Microduck simulator, batteries included.
 #
 # Everything needed to watch (and train) Pollen Robotics' 25 cm bipedal robot
 # is baked in: the MuJoCo physics, the MJCF robot model with its meshes, the
 # pretrained ONNX policies, the PPO trainer, and a prebuilt Next.js viewer.
-# First run is offline and instant — no clone, no download, no host Python.
+# First run is offline and instant - no clone, no download, no host Python.
 #
 # Multi-arch: linux/amd64, linux/arm64, linux/ppc64le, linux/s390x.
 
@@ -26,7 +26,7 @@ ARG POLICIES_REPO=https://github.com/IronSpiderMan/MicroDuckModels.git
 ARG POLICIES_SHA=HEAD
 
 # ===========================================================================
-# Stage 1 — fetch sources (shallow, then strip .git; no VCS history shipped)
+# Stage 1 - fetch sources (shallow, then strip .git; no VCS history shipped)
 # ===========================================================================
 FROM alpine/git:latest AS src
 ARG LAB_REPO LAB_SHA RL_REPO RL_SHA POLICIES_REPO POLICIES_SHA
@@ -50,7 +50,7 @@ RUN set -eux; \
 # The `test` assertions at the end are the point of this stage as much as the
 # copying is: these builds track upstream HEAD, so a file moving upstream must
 # fail the BUILD. Without them it would produce an image that builds green and
-# then breaks in a user's hands — the worst place to find out.
+# then breaks in a user's hands - the worst place to find out.
 RUN set -eux; \
     mkdir -p /out/microduck_rl/src/mjlab_microduck/robot /out/policies; \
     cp -r /src/microduck_rl/src/mjlab_microduck/robot/microduck \
@@ -68,7 +68,7 @@ RUN set -eux; \
     n=$(ls /out/policies/*.onnx | wc -l); echo "policies: $n"; [ "$n" -ge 5 ]
 
 # ===========================================================================
-# Stage 2 — build the viewer into a standalone production server
+# Stage 2 - build the viewer into a standalone production server
 # ===========================================================================
 FROM node:22-bookworm-slim AS viewer
 WORKDIR /build
@@ -85,7 +85,7 @@ RUN npm ci --no-audit --no-fund
 RUN npm run build
 
 # ===========================================================================
-# Stage 3 — Python deps. Heaviest layer; built before app code so edits to
+# Stage 3 - Python deps. Heaviest layer; built before app code so edits to
 # the lab source do not re-resolve torch.
 # ===========================================================================
 FROM python:3.12-slim-bookworm AS pydeps
@@ -113,7 +113,7 @@ RUN set -eux; \
         /app/microduck_local
 
 # ===========================================================================
-# Stage 4 — runtime
+# Stage 4 - runtime
 # ===========================================================================
 FROM python:3.12-slim-bookworm AS runtime
 
@@ -123,7 +123,7 @@ ARG VERSION=dev
 ARG BUILD_DATE=unknown
 
 LABEL org.opencontainers.image.title="microduck-docker" \
-      org.opencontainers.image.description="Microduck bipedal robot simulator — MuJoCo physics, pretrained RL policies and a 3D browser viewer, in one container." \
+      org.opencontainers.image.description="Microduck bipedal robot simulator - MuJoCo physics, pretrained RL policies and a 3D browser viewer, in one container." \
       org.opencontainers.image.source="https://github.com/ajeetraina/microduck-docker" \
       org.opencontainers.image.licenses="Apache-2.0 AND CC-BY-NC-SA-4.0" \
       org.opencontainers.image.version="${VERSION}" \

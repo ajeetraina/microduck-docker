@@ -45,7 +45,7 @@ curl -fsS "localhost:${LAB}/scene"    -o "$OUT/scene.json"
 curl -fsS "localhost:${LAB}/policies" -o "$OUT/policies.json"
 docker run --rm "$IMAGE" version | tee "$OUT/version.txt"
 
-# Screenshot via Playwright in a throwaway container — nothing to install here.
+# Screenshot via Playwright in a throwaway container - nothing to install here.
 # --network host so it can reach the published loopback ports.
 echo "▶ screenshotting the viewer"
 docker run --rm --network host -v "$PWD/$OUT:/out" \
@@ -65,7 +65,7 @@ docker run --rm --network host -v "$PWD/$OUT:/out" \
         await b.close();
       })().catch(e => { console.error(e); process.exit(1); });
     "
-  ' || echo "⚠ screenshot step failed — API evidence above is still valid"
+  ' || echo "⚠ screenshot step failed - API evidence above is still valid"
 
 echo "▶ container log"
 docker logs "$NAME" 2>&1 | tail -20 | tee "$OUT/run.log"

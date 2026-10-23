@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# microduck-docker entrypoint — start the simulator, or hand over to a tool.
+# microduck-docker entrypoint - start the simulator, or hand over to a tool.
 #
 # Design rule: a newcomer types ONE command and sees a walking robot. Anything
 # that can go wrong should explain itself in plain language, because the person
@@ -38,7 +38,7 @@ resolve() {
     elif [ -e "$POLICY_DIR/$tok" ]; then printf '%s ' "$POLICY_DIR/$tok"
     elif [ -e "$POLICY_DIR/$tok.onnx" ]; then printf '%s ' "$POLICY_DIR/$tok.onnx"
     elif [ -e "$RUNS_DIR/$tok" ]; then printf '%s ' "$RUNS_DIR/$tok"
-    else warn "⚠  skipping '$tok' — no such policy (try: microduck-docker policies)" >&2
+    else warn "⚠  skipping '$tok' - no such policy (try: microduck-docker policies)" >&2
     fi
   done
 }
